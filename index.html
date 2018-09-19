@@ -1,46 +1,57 @@
+
+
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="styles.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-  <title>Responsive Carousel</title>
 
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <title>Responsive Carousel</title>
 </head>
 <body>
 <div>
   <div>
-    <h2 class="header-text">Image Carousel</h2>
+     <h2 class="header-text">Image Carousel</h2>
+  </div>
+  <div id="carousel">
+    <div>
+			<div data-link="1" class="img-box">
+				<img src="images/trespass.jpg" alt="trespass">
+			</div>
+			<div data-link="2" class="img-box">
+				<img src="images/tbone.jpg" alt="tbone">
+			</div>
+			<div data-link="3" class="img-box">
+				<img src="images/psychic.jpg" alt="psychic">
+      </div>
+      <div data-link="4" class="img-box">
+				<img src="images/mojo.jpg" alt="Mojo">
+      </div>
+      <div data-link="5" class="img-box">
+				<img src="images/o-side.jpg" alt="O-Side">
+      </div>
+    </div>
+  </div>
+
+  <div class="arrows no-select">
+    <i class="fas fa-chevron-left arrows" id="prev" href="#"></i>
+    <i class="fas fa-chevron-right arrows" id="next" href="#"></i>
+  </div>
+  <div class="dots">
+    <div class="dotstyle dotstyle-fillup">
+			<ul class="dots-ul">
+				<li data-num="1" class="current"><a href="#">1</a></li>
+				<li data-num="2"><a href="#">2</a></li>
+				<li data-num="3"><a href="#">3</a></li>
+				<li data-num="4"><a href="#">4</a></li>
+				<li data-num="5"><a href="#">5</a></li>
+			</ul>
+    </div>
   </div>
 </div>
-<div id="carousel">
-  <div>
-    <div data-link="1" class="img-box">
-      <img src="images/trespass.jpg" alt="trespass">
-    </div>
-    <div data-link="2" class="img-box">
-      <img src="images/tbone.jpg" alt="tbone">
-    </div>
-    <div data-link="3" class="img-box">
-      <img src="images/psychic.jpg" alt="psychic">
-    </div>
-    <div data-link="4" class="img-box">
-      <img src="images/mojo.jpg" alt="mojo">
-    </div>
-    <div data-link="5" class="img-box">
-      <img src="images/o-side.jpg" alt="0-side">
-    </div>
-  </div>
-</div>
-
-<div class="arrows">
-  <i class="fas fa-chevron-left arrows" id="prev" href="#"></i>
-  <i class="fas fa-chevron-right arrows" id="next" href="#"></i>
-</div>
-</div>
-
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="main.js"></script>
 </body>
