@@ -7,44 +7,71 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 (0, _jquery.default)(document).ready(function () {
   var currentPic = 1;
+  console.log(currentPic);
   var picCount = (0, _jquery.default)('.img-box').length;
-  (0, _jquery.default)('.dotstyle a').on('click', function () {
+  autoPlay();
+  var intervalID = setInterval(autoPlay, 4000);
+
+  function autoPlay() {
+    (0, _jquery.default)('.img-box').addClass('hidden');
+    (0, _jquery.default)("div[data-link=" + currentPic + "]").removeClass('hidden');
+    (0, _jquery.default)('.dotstyle li').removeClass('current');
+    (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
+
+    if (currentPic >= picCount) {
+      currentPic = 0;
+    }
+
+    currentPic++;
+  }
+
+  (0, _jquery.default)('.dotstyle span').on('click', function () {
+    clearInterval(intervalID);
     (0, _jquery.default)('.dotstyle li').removeClass('current');
     (0, _jquery.default)(this).parent('li').addClass('current');
     var picNum = (0, _jquery.default)(this).parent('li').attr('data-num');
-    currentPic = picNum;
+    currentPic = parseInt(picNum, 10);
     (0, _jquery.default)('.img-box').addClass('hidden');
-    (0, _jquery.default)("div[data-link=".concat(picNum, "]")).removeClass('hidden');
+    (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+    intervalID = setInterval(autoPlay, 4000);
   });
-  (0, _jquery.default)('#next').click(function () {
-    if (currentPic >= picCount) {
-      currentPic = 1;
+  (0, _jquery.default)('#rightArrow').click(function () {
+    clearInterval(intervalID);
+
+    if (currentPic >= 6) {
+      currentPic = 2;
       (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
       (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
+      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
     } else {
       currentPic++;
       (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
       (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
+      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
     }
+
+    intervalID = setInterval(autoPlay, 4000);
   });
-  (0, _jquery.default)('#prev').click(function () {
-    if (currentPic <= 1) {
-      currentPic = picCount;
+  (0, _jquery.default)('#leftArrow').click(function () {
+    clearInterval(intervalID);
+
+    if (currentPic <= 2) {
+      currentPic = 6;
       (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
       (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
+      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
     } else {
       currentPic--;
       (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
       (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
+      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
     }
+
+    intervalID = setInterval(autoPlay, 4000);
   });
 });
 

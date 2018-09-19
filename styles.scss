@@ -1,111 +1,157 @@
 $font-fam: 'Montserrat Subrayada', sans-serif;
 
-.header-text {
-  margin: 100px auto 3px auto;
-  text-align: center;
-  font-family: $font-fam;
-  font-size: 2rem;
-}
-
 body {
   background-image: linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
-}
-
-img {
-  width: 220px;
 }
 
 .hidden {
   display: none;
 }
 
-.arrows {
-  font-size: 50px;
-  margin: 10px 50px;
-  text-align: center;
-}
-
 .dots {
   margin: 10px 50px;
   text-align: center;
-  height: 50px;
+}
+
+.dotstyle {
+  ul {
+    position: relative;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    cursor: default;
+  }
+
+  li {
+    position: relative;
+    display: block;
+    float: left;
+    cursor: pointer;
+    width: 12px;
+    height: 12px;
+    margin: 0 4px;
+  }
+
+  li span {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border-radius: 50%;
+    background-color: #000;
+    background-color: rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    position: absolute;
+  }
+}
+
+.dotstyle-fillup {
+  li span {
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 1);
+  }
+
+  li span::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    height: 0;
+    left: 0;
+    width: 100%;
+    background-color: #000;
+    box-shadow: 0 0 1px #000;
+  }
+
+  li span:hover,
+  li span:focus {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  li.current span::after {
+    height: 100%;
+  }
+}
+
+.header-text {
+  text-align: center;
+  font-family: $font-fam;
+  font-size: 2rem;
+  margin: 100px auto 13px auto;
 }
 
 #carousel {
-  width: 220px;
-  height: 220px;
   margin: 0 auto;
   padding: 0;
   overflow: hidden;
   border: 1px solid black;
   box-sizing: border-box;
+  width: 220px;
+  height: 220px;
 }
 
-.dotstyle ul {
-  position: relative;
-  display: inline-block;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  cursor: default;
+img {
+  width: 220px;
 }
 
-.dotstyle li {
-  position: relative;
-  display: block;
-  float: left;
-  margin: 0 5px;
-  width: 16px;
-  height: 16px;
-  cursor: pointer;
+.arrows {
+  text-align: center;
+  font-size: 20px;
+  margin: 10px 30px;
 }
 
-.dotstyle li a {
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  outline: none;
-  border-radius: 50%;
-  background-color: #000;
-  background-color: rgba(0, 0, 0, 0.3);
-  text-indent: -999em;
-  cursor: pointer;
-  position: absolute;
+@media (min-width: 600px) {
+  .header-text {
+    font-size: 3rem;
+    margin: 100px auto 30px auto;
+  }
+
+  #carousel {
+    width: 400px;
+    height: 400px;
+  }
+
+  img {
+    width: 400px;
+  }
+
+  .arrows {
+    font-size: 35px;
+    margin: 15px 40px;
+  }
+
+  .dotstyle li {
+    width: 16px;
+    height: 16px;
+    margin: 0 6px 60px 6px;
+  }
 }
 
-.dotstyle-fillup li a {
-  overflow: hidden;
-  background-color: rgba(0, 0, 0, 0);
-  box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 1);
-  transition: background 0.3s;
-}
+@media (min-width: 1100px) {
+  .header-text {
+    font-size: 4rem;
+    margin: 100px auto 45px auto;
+  }
 
-.dotstyle-fillup li a::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  height: 0;
-  left: 0;
-  width: 100%;
-  background-color: #000;
-  box-shadow: 0 0 1px #000;
-}
+  #carousel {
+    width: 500px;
+    height: 500px;
+  }
 
-.dotstyle-fillup li a:hover,
-.dotstyle-fillup li a:focus {
-  background-color: rgba(0, 0, 0, 0.4);
-}
+  img {
+    width: 500px;
+  }
 
-.dotstyle-fillup li.current a::after {
-  height: 100%;
-}
+  .arrows {
+    font-size: 50px;
+    margin: 20px 55px;
+  }
 
-.no-select {
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  .dotstyle li {
+    width: 20px;
+    height: 20px;
+    margin: 0 8px 100px 8px;
+  }
 }
