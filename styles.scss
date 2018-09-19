@@ -1,3 +1,35 @@
-html {
-  font-size: 30px;
+$font-fam: 'Montserrat Subrayada', sans-serif;
+
+body {
+  background-image: linear-gradient(to left, rgba(0, 0, 0, 0.0001) 0, rgba(0, 0, 0, 0.5) 100%);
+}
+
+img {
+  width: 220px;
+}
+
+.hidden {
+  display: none;
+}
+
+.header-text {
+  margin: 100px auto 3px auto;
+  text-align: center;
+  font-family: $font-fam;
+  font-size: 2rem;
+}
+
+.arrows {
+  font-size: 20px;
+  margin: 10px 30px;
+  text-align: center;
+}
+
+#carousel {
+  width: 220px;
+  height: 220px;
+  margin: 0 auto;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid black;
 }
