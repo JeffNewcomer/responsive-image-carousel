@@ -5,75 +5,81 @@ var _jquery = _interopRequireDefault(require("jquery"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-(0, _jquery.default)(document).ready(function () {
-  var currentPic = 1;
-  console.log(currentPic);
-  var picCount = (0, _jquery.default)('.img-box').length;
-  autoPlay();
-  var intervalID = setInterval(autoPlay, 4000);
+// $(document).ready(() => {
+//   let currentPic = 1;
+//   console.log(currentPic)
+//   const picCount = $('.img-box').length;
+//   autoPlay()
+//   let intervalID = setInterval(autoPlay, 4000);
+//
+//   function autoPlay() {
+//     $('.img-box').addClass('hidden')
+//     $(`div[data-link=` + currentPic + `]`).removeClass('hidden')
+//     $('.dotstyle li').removeClass('current')
+//     $(`li[data-num=${currentPic}]`).addClass('current')
+//     if (currentPic >= picCount) {
+//       currentPic = 0
+//     }
+//     currentPic++
+//   }
+(0, _jquery.default)(function () {
+  setInterval(function () {
+    (0, _jquery.default)("#carousel ul").animate({
+      marginLeft: "-220px"
+    }, 800, function () {
+      (0, _jquery.default)("#carousel ul li:last").after((0, _jquery.default)("#carousel ul li:first"));
+      (0, _jquery.default)(this).css("margin-left", "0");
+    });
+  }, 3000);
+});
+(0, _jquery.default)('.dotstyle span').on('click', function () {
+  clearInterval(intervalID);
+  (0, _jquery.default)('.dotstyle li').removeClass('current');
+  (0, _jquery.default)(this).parent('li').addClass('current');
+  var picNum = (0, _jquery.default)(this).parent('li').attr('data-num');
+  currentPic = parseInt(picNum, 10);
+  (0, _jquery.default)('.img-box').addClass('hidden');
+  (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
+  intervalID = setInterval(autoPlay, 4000);
+});
+(0, _jquery.default)('#rightArrow').click(function () {
+  clearInterval(intervalID);
 
-  function autoPlay() {
+  if (currentPic >= 6) {
+    currentPic = 2;
     (0, _jquery.default)('.img-box').addClass('hidden');
-    (0, _jquery.default)("div[data-link=" + currentPic + "]").removeClass('hidden');
+    (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
     (0, _jquery.default)('.dotstyle li').removeClass('current');
-    (0, _jquery.default)("li[data-num=".concat(currentPic, "]")).addClass('current');
-
-    if (currentPic >= picCount) {
-      currentPic = 0;
-    }
-
+    (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
+  } else {
     currentPic++;
+    (0, _jquery.default)('.img-box').addClass('hidden');
+    (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
+    (0, _jquery.default)('.dotstyle li').removeClass('current');
+    (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
   }
 
-  (0, _jquery.default)('.dotstyle span').on('click', function () {
-    clearInterval(intervalID);
-    (0, _jquery.default)('.dotstyle li').removeClass('current');
-    (0, _jquery.default)(this).parent('li').addClass('current');
-    var picNum = (0, _jquery.default)(this).parent('li').attr('data-num');
-    currentPic = parseInt(picNum, 10);
-    (0, _jquery.default)('.img-box').addClass('hidden');
-    (0, _jquery.default)("div[data-link=".concat(currentPic, "]")).removeClass('hidden');
-    intervalID = setInterval(autoPlay, 4000);
-  });
-  (0, _jquery.default)('#rightArrow').click(function () {
-    clearInterval(intervalID);
-
-    if (currentPic >= 6) {
-      currentPic = 2;
-      (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
-      (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
-    } else {
-      currentPic++;
-      (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
-      (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
-    }
-
-    intervalID = setInterval(autoPlay, 4000);
-  });
-  (0, _jquery.default)('#leftArrow').click(function () {
-    clearInterval(intervalID);
-
-    if (currentPic <= 2) {
-      currentPic = 6;
-      (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
-      (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
-    } else {
-      currentPic--;
-      (0, _jquery.default)('.img-box').addClass('hidden');
-      (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
-      (0, _jquery.default)('.dotstyle li').removeClass('current');
-      (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
-    }
-
-    intervalID = setInterval(autoPlay, 4000);
-  });
+  intervalID = setInterval(autoPlay, 4000);
 });
+(0, _jquery.default)('#leftArrow').click(function () {
+  clearInterval(intervalID);
+
+  if (currentPic <= 2) {
+    currentPic = 6;
+    (0, _jquery.default)('.img-box').addClass('hidden');
+    (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
+    (0, _jquery.default)('.dotstyle li').removeClass('current');
+    (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
+  } else {
+    currentPic--;
+    (0, _jquery.default)('.img-box').addClass('hidden');
+    (0, _jquery.default)("div[data-link=".concat(currentPic - 1, "]")).removeClass('hidden');
+    (0, _jquery.default)('.dotstyle li').removeClass('current');
+    (0, _jquery.default)("li[data-num=".concat(currentPic - 1, "]")).addClass('current');
+  }
+
+  intervalID = setInterval(autoPlay, 4000);
+}); // })
 
 },{"jquery":2}],2:[function(require,module,exports){
 /*!
