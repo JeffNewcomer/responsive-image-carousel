@@ -1,81 +1,29 @@
-import $ from 'jquery'
+$(() => {
 
-// $(document).ready(() => {
-//   let currentPic = 1;
-//   console.log(currentPic)
-//   const picCount = $('.img-box').length;
-//   autoPlay()
-//   let intervalID = setInterval(autoPlay, 4000);
-//
-//   function autoPlay() {
-//     $('.img-box').addClass('hidden')
-//     $(`div[data-link=` + currentPic + `]`).removeClass('hidden')
-//     $('.dotstyle li').removeClass('current')
-//     $(`li[data-num=${currentPic}]`).addClass('current')
-//     if (currentPic >= picCount) {
-//       currentPic = 0
-//     }
-//     currentPic++
-//   }
+const ul = $(".slider ul");
+const slide_count = ul.children().length;
+const slide_width_pc = 100.0 / slide_count;
+let slide_index = 0;
 
-$(function () {
-  setInterval(function(){
-  $("#carousel ul").animate({marginLeft:"-220px"},800, function(){
-  $("#carousel ul li:last").after($("#carousel ul li:first"));
-  $(this).css("margin-left","0");
-  });
-
-  },3000);
+ul.find("li").each(function(indx) {
+  const left_percent = `${slide_width_pc * indx}%`;
+  $(this).css({"left":left_percent});
+  $(this).css({width:`${100 / slide_count}%`});
 });
 
+$(".slider .prev").click(() => {
+  slide(slide_index - 1);
+});
 
-$('.dotstyle span').on('click', function () {
-  clearInterval(intervalID)
-  $('.dotstyle li').removeClass('current')
-  $(this).parent('li').addClass('current')
-  const picNum = ($(this).parent('li').attr('data-num'));
-  currentPic = parseInt(picNum, 10)
-  $('.img-box').addClass('hidden')
-  $(`div[data-link=${currentPic}]`).removeClass('hidden')
-  intervalID = setInterval(autoPlay, 4000)
-})
+$(".slider .next").click(() => {
+  slide(slide_index + 1);
+});
 
-$('#rightArrow').click(() => {
-  clearInterval(intervalID)
-  if (currentPic >= 6) {
-    currentPic = 2
-    $('.img-box').addClass('hidden')
-    $(`div[data-link=${currentPic - 1}]`).removeClass('hidden')
-    $('.dotstyle li').removeClass('current')
-    $(`li[data-num=${currentPic - 1}]`).addClass('current')
-  }
-  else {
-    currentPic++
-    $('.img-box').addClass('hidden')
-    $(`div[data-link=${currentPic - 1}]`).removeClass('hidden')
-    $('.dotstyle li').removeClass('current')
-    $(`li[data-num=${currentPic - 1}]`).addClass('current')
-  }
-  intervalID = setInterval(autoPlay, 4000)
-})
-
-$('#leftArrow').click(() => {
-  clearInterval(intervalID)
-  if (currentPic <= 2) {
-    currentPic = 6
-    $('.img-box').addClass('hidden')
-    $(`div[data-link=${currentPic - 1}]`).removeClass('hidden')
-    $('.dotstyle li').removeClass('current')
-    $(`li[data-num=${currentPic - 1}]`).addClass('current')
-  }
-  else {
-    currentPic--
-    $('.img-box').addClass('hidden')
-    $(`div[data-link=${currentPic - 1}]`).removeClass('hidden')
-    $('.dotstyle li').removeClass('current')
-    $(`li[data-num=${currentPic - 1}]`).addClass('current')
-  }
-  intervalID = setInterval(autoPlay, 4000)
-
-})
-// })
+function slide(new_slide_index) {
+  if(new_slide_index < 0 || new_slide_index >= slide_count) return;
+  const margin_left_pc = `${new_slide_index * (-100)}%`;
+  ul.animate({"margin-left": margin_left_pc}, 400, () => {
+  slide_index = new_slide_index
+});
+}
+});
