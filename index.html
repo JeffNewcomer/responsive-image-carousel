@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en-us">
 <head>
@@ -8,48 +7,53 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat+Subrayada" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="styles.css">
-  <title>jQuery Component - Carousel</title>
+  <!-- <link rel="stylesheet" href="styles.scss"> -->
+  <title>Infinite Loop Responsive Carousel</title>
 </head>
 <body>
-<div>
-  <div>
-     <h2 class="header-text">Responsive Carousel</h2>
+<div class="header">
+  <h2 class="header-text">Responsive<br> Carousel</h2>
+  <div class="container">
+  <div class="slider">
+    <ul>
+      <li>
+        <img src="images/mojo.jpg" />
+        <div class="content">MOJO<br>The world's greatest dog.</div>
+      </li>
+      <li>
+        <img src="images/o-side.jpg" />
+        <div class="content">O-SIDE, CA<br>Home of the Top Gun house.</div>
+      </li>
+      <li>
+        <img src="images/psychic.jpg" />
+        <div class="content">LOTTERIES<br>How come they never win them?</div>
+      </li>
+      <li>
+        <img src="images/tbone.jpg" />
+        <div class="content">TBONE<br>Mickey Mouse fans checkin' out the work of local artist TBONE.</div>
+      </li>
+      <li>
+        <img src="images/trespass.jpg" />
+        <div class="content">KEEP OUT<br>No trespassing laws strictly enforced by the local PFARD.</div>
+      </li>
+    </ul>
+    <button class="prev"><i class="fas fa-chevron-left arrows" id="leftArrow"></i></button>
+    <button class="next"><i class="fas fa-chevron-right arrows" id="rightArrow"></i></button>
   </div>
-  <div id="carousel">
-    <div>
-      <div data-link="1" class="img-box">
-				<img src="images/trespass.jpg" alt="forbidden">
-			</div>
-			<div data-link="2" class="img-box">
-				<img src="images/tbone.jpg" alt="tbone">
-			</div>
-			<div data-link="3" class="img-box">
-				<img src="images/psychic.jpg" alt="psychic">
-      </div>
-      <div data-link="4" class="img-box">
-				<img src="images/mojo.jpg" alt="Mojo">
-      </div>
-      <div data-link="5" class="img-box">
-				<img src="images/o-side.jpg" alt="Oceanside">
-      </div>
-    </div>
-  </div>
-  <div class="arrows no-select">
-    <i class="fas fa-chevron-left arrows" id="leftArrow"></i>
-    <i class="fas fa-chevron-right arrows" id="rightArrow"></i>
-  </div>
-  <div class="dots">
-    <div class="dotstyle dotstyle-fillup">
-			<ul class="dots-ul">
-				<li data-num="1" class="current"><span></span></li>
-				<li data-num="2"><span></span></li>
-				<li data-num="3"><span></span></li>
-				<li data-num="4"><span></span></li>
-				<li data-num="5"><span></span></li>
-			</ul>
-    </div>
   </div>
 </div>
+<!-- <div class="dots">
+  <div class="dotstyle dotstyle-fillup">
+		<ul class="dots-ul">
+			<li data-num="1" class="current"><span></span></li>
+			<li data-num="2"><span></span></li>
+			<li data-num="3"><span></span></li>
+			<li data-num="4"><span></span></li>
+			<li data-num="5"><span></span></li>
+		</ul>
+  </div>
+</div> -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="main.js"></script>
 </body>
